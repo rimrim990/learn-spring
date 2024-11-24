@@ -1,7 +1,6 @@
 package org.study.learnspring.servlet;
 
 import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns="/user", name = "userServlet")
+@WebServlet(urlPatterns = "/user", name = "userServlet")
 public class UserServlet extends HttpServlet {
 
     @Override
@@ -19,6 +18,7 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        res.setHeader("hitCount", (String) req.getAttribute("hitCount"));
         res.setHeader("user", "admin");
         PrintWriter writer = res.getWriter();
         writer.print("username=hi");
